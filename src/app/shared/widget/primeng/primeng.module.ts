@@ -13,7 +13,7 @@ import { DropdownModule } from 'primeng/dropdown';
 import { ProgressBarModule } from 'primeng/progressbar';
 import { InputTextModule } from 'primeng/inputtext';
 import { CardModule } from 'primeng/card';
-
+import { CarouselModule } from 'primeng/carousel';
 @NgModule({
   declarations: [],
   imports: [
@@ -29,7 +29,8 @@ import { CardModule } from 'primeng/card';
     DropdownModule,
     ProgressBarModule,
     InputTextModule,
-    CardModule
+    CardModule,
+    CarouselModule
 
   ],
   exports: [
@@ -45,7 +46,8 @@ import { CardModule } from 'primeng/card';
     DropdownModule,
     ProgressBarModule,
     InputTextModule,
-    CardModule
+    CardModule,
+    CarouselModule
 
   ]
 })

@@ -1,3 +1,4 @@
+import { ProductInterface } from './../app/products/interfaces/product.interface';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
@@ -11,8 +12,11 @@ export class ApiStoreService {
     private httpClient: HttpClient
   ) { }
 
-  getProducts(){
-  return this.httpClient.get('https://api.escuelajs.co/api/v1/products')
-   
+  getAllProducts(){
+  return this.httpClient.get('https://api.escuelajs.co/api/v1/products');   
+  }
+
+  getSingleProduct(id: number){
+    return this.httpClient.get<ProductInterface>(`https://api.escuelajs.co/api/v1/products/${id}`);
   }
 }

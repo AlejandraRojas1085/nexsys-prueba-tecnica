@@ -1,1 +1,35 @@
-<p>products-show works!</p>
+<p-card>
+  <div class="grid" *ngIf="product">
+    <div class="col-12 sm:col-12 lg:col-6 ">
+
+      <p-carousel [value]="product.images" styleClass="custom-carousel" [numVisible]="1" [numScroll]="1"
+        [circular]="true" [autoplayInterval]="3000" [responsiveOptions]="responsiveOptions">
+
+        <ng-template let-product pTemplate="item">
+          <div class="product-item">
+            <div class="product-item-content">
+              <div class="mb-3">
+                <img [src]=product [alt]=product class="product-image" />
+              </div>
+            </div>
+          </div>
+        </ng-template>
+      </p-carousel>
+
+    </div>
+    <div class="col-12 sm:col-12 lg:col-6 ">
+      <h3 class="mb-1"> {{ product.title }}</h3>
+
+      <h4>
+        <span class="mt-0 mb-3 text-blue-500">{{ product.price | currency }} </span>
+      </h4>
+
+      <p class="text-500">{{ product.description }}</p>
+
+      <button pButton type="button" label="ADD TO CART" class="p-button-sm"></button>
+    </div>
+  </div>
+  <div class="grid">
+
+  </div>
+</p-card>

@@ -1,26 +1,20 @@
 <div class="grid">
   <div class="col-12 lg:col-6 xl:col-3" *ngFor="let item of products">
-    <div class="card" (click)="show(item.id)">
-      <div class="flex  column-gap-4 row-gap-6">
-        <div>
-          <img src="{{item.images[0]}}" alt="logo" height="150" width="150">
-        </div>
-      </div>
-      <span class="text-green-500 font-medium"> {{ item.title}} </span>
-      <span class="text-500">{{ item.description }}</span>
-    </div>
-    <!-- <div class="row" >
-      <div class="col ">
-        <div class="card" >
-          <div class="flex justify-content-between mb-3">
-            <div>
-              
-            </div>
-          </div>
-          <span class="text-green-500 font-medium"> {{ item.title}} </span>
-          <span class="text-500">{{ item.description }}</span>
-        </div>
-      </div>
-    </div> -->
+    <p-card styleClass="p-card-shadow" class="text-base">
+      <ng-template pTemplate="header">
+        <img src="{{ item.images[0].includes('https')? item.images[0]: '../../../../../../assets/demo/images/error/producto-default.jpg' }}" alt="logo">
+       
+      </ng-template>
+
+      <h5 class="content">{{item.title}}</h5>
+
+      <p class="text-500 content">{{ item.description }}</p>
+
+      <p>
+        <span class="text-blue-500">{{ item.price | currency }} </span>
+      </p>
+
+      <button pButton type="button" label="VIEW DATAIL" class="p-button-sm" (click)="show(item.id)"></button>
+    </p-card>
   </div>
 </div>
