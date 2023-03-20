@@ -23,6 +23,7 @@ import { RadioButtonModule } from 'primeng/radiobutton';
 import { StyleClassModule } from 'primeng/styleclass';
 import { TagModule } from 'primeng/tag';
 import { FocusTrapModule } from 'primeng/focustrap';
+import { DividerModule } from 'primeng/divider';
 @NgModule({
   declarations: [],
   imports: [
@@ -48,6 +49,7 @@ import { FocusTrapModule } from 'primeng/focustrap';
     StyleClassModule,
     TagModule,
     FocusTrapModule,
+    DividerModule
    
   ],
   exports: [
@@ -74,6 +76,7 @@ import { FocusTrapModule } from 'primeng/focustrap';
     StyleClassModule,
     TagModule,
     FocusTrapModule,
+    DividerModule
    
   ]
 })

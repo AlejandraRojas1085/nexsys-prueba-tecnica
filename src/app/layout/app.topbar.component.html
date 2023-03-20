@@ -1,7 +1,5 @@
-<div class="layout-topbar">
-    <a class="layout-topbar-logo" routerLink="">
-        <img src="assets/layout/images/nexsysLogo.png" alt="logo" height="60">                       
-    </a>
+<div class="layout-topbar">    
+     <img src="assets/layout/images/nexsysLogo.png" alt="logo" height="100" >
 
     <button #menubutton class="p-link layout-menu-button layout-topbar-button" (click)="layoutService.onMenuToggle()">
         <i class="pi pi-bars"></i>
@@ -20,9 +18,9 @@
             <i class="pi pi-user"></i>
             <span>Profile</span>
         </button>
-        <button class="p-link layout-topbar-button" [routerLink]="'/documentation'">
+        <!-- <button class="p-link layout-topbar-button" [routerLink]="'/documentation'">
             <i class="pi pi-cog"></i>
             <span>Settings</span>
-        </button>
+        </button> -->
     </div>
 </div>

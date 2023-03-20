@@ -13,12 +13,18 @@ export class ApiStoreService {
   ) { }
 
   getAllProducts(){
-  return this.httpClient.get<ProductInterface>('https://api.escuelajs.co/api/v1/products');  
-  
- 
+  return this.httpClient.get<ProductInterface>('https://api.escuelajs.co/api/v1/products');
   }
 
   getSingleProduct(id: number){
     return this.httpClient.get<ProductInterface>(`https://api.escuelajs.co/api/v1/products/${id}`);
+  }
+
+  filterByPriceRange(minimum: number, maximum:number){
+    return this.httpClient.get<ProductInterface>(`https://api.escuelajs.co/api/v1/products/?price_min=${minimum}&price_max=${maximum}`)
+  }
+
+  filterByCategory(idCategory: number){
+return this.httpClient.get<ProductInterface>(`https://api.escuelajs.co/api/v1/products/?categoryId=${idCategory}`)
   }
 }

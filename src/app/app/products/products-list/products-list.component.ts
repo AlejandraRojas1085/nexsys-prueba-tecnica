@@ -1,13 +1,13 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
 import { PrimeNGConfig, SelectItem } from 'primeng/api';
-import { elementAt } from 'rxjs';
+
 import { FilterService } from 'src/app/services/filter.service';
 import { ProductService } from 'src/app/services/product.service';
-import { ProductInterface } from '../interfaces/product.interface';
 
+import { ProductInterface } from '../interfaces/product.interface';
 interface filter {
   name: string,
   value: string
@@ -19,8 +19,6 @@ interface category {
   creationAt: string,
   updateAt: string
 }
-
-
 @Component({
   selector: 'app-products-list',
   templateUrl: './products-list.component.html',
@@ -28,16 +26,14 @@ interface category {
 })
 export class ProductsListComponent implements OnInit {
   @ViewChild('dataview') dataView!: DataView;
-  products: Array<any> = [];
+  products:Array<any> =[];
 
   sortOptions!: SelectItem[];
-
   sortOrder!: number;
-
   sortField!: string;
 
-  minimum = new FormControl(" ");
-  maximum = new FormControl(" ");
+  minimum = new FormControl(null, [Validators.required]);
+  maximum = new FormControl(null, [Validators.required]);
 
   filters!: filter[]
   selectedFilter!: filter;
@@ -60,7 +56,7 @@ export class ProductsListComponent implements OnInit {
   ) { }
 
   async ngOnInit() {
-    this.products = await this.productService.listProducts() as Array<any>;
+    this.products = await this.productService.listProducts() as Array<ProductInterface>;
 
     this.primengConfig.ripple = true;
 
@@ -73,7 +69,7 @@ export class ProductsListComponent implements OnInit {
   }
 
   show(id: number) {
-    this.router.navigate([`products/show/${id}`]);
+    this.router.navigate([`/show/${id}`]);
   }
 
   onSortChange(event: any) {
@@ -89,41 +85,30 @@ export class ProductsListComponent implements OnInit {
   }
 
   categoriesProducts() {
-    const setObj = new Set();
+    const setObj = new Set();   
 
-    const category = this.products.reduce((acc, product) => {
+    const category = this.products.reduce((acc, product) => {      
       if (!setObj.has(product.category.id)) {
         setObj.add(product.category.id)
-        acc.push(product.category)
-      }
+        acc.push(product)
+      } 
       return acc;
     }, []);
 
     this.categories = category;
   }
 
-  getfilterByPrice() {
+  async getFilterByPriceRange() {
     if (this.maximum.value && this.minimum.value) {
-      console.log(this.maximum.value, this.minimum.value);
-
-
+      this.products = await this.filterService.filterPriceRange(parseInt(this.minimum.value), parseInt(this.maximum.value)) as Array<ProductInterface>
     }
   }
 
   async getFilterByCategory() {
-
     if (this.selectedCategory) {
-
-      this.products = await this.filterService.filterByCategory(this.selectedCategory.id, this.products) as Array<any>
-
-      console.log(this.products);
-
+      this.products = await this.filterService.filterCategory(this.selectedCategory.id) as Array<ProductInterface>
     } else {
       this.products
     }
-
   }
-
-
-
 }

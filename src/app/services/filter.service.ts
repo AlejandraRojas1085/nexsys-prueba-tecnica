@@ -1,42 +1,50 @@
-import { Message } from 'primeng/api';
+import { Message, PrimeNGConfig } from 'primeng/api';
 import { ProductsListComponent } from './../app/products/products-list/products-list.component';
 import { Product } from './../demo/api/product';
 import { Injectable } from '@angular/core';
+import { ApiStoreService } from './api-store.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class FilterService {
 
-  constructor() { }
+  constructor(
+    private apiStoreService: ApiStoreService
+  ) { }
 
-  /*  filterByPrice(Product; arr) {
-     const price: number = parseInt((event.target as HTMLInputElement).value);
- 
-     if (price) {
-       const resultFind: Array<any> = [];
- 
-       const find = this.products.find(element => element.price === price)
-       resultFind.push(find)
- 
-       this.products = resultFind
-     } else {
-       this.products
-     }
-   } */
-
-  filterByCategory(idCategory: number, products: Array<any>) {
-
+  filterPriceRange(minimum: number, maximum: number) {
     return new Promise((resolve, reject) => {
-      try {  
-        const filter = products.filter(element => element.category.id == idCategory);
-        if (filter) {         
-          resolve(filter)          
-        }   
-
+      try {
+        this.apiStoreService.filterByPriceRange(minimum, maximum).subscribe({
+          next: (response) => {
+            resolve(response);
+          },
+          error: (error) => {
+            reject(error);
+          }
+        });
       } catch (error) {
         reject(error)
       }
     })
   }
+
+  filterCategory(category: number) {
+    return new Promise((resolve, reject) => {
+      try {
+        this.apiStoreService.filterByCategory(category).subscribe({
+          next: (response) => {
+            resolve(response);
+          },
+          error: (error) => {
+            reject(error);
+          }
+        });
+      } catch (error) {
+        reject(error)
+      }
+    })
+  }
+
 }
