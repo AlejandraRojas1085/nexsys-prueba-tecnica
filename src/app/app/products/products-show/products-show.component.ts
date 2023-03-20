@@ -1,9 +1,8 @@
-import { ApiStoreService } from './../../../services/api-store.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 import { map } from 'rxjs/operators';
-import { Observable } from 'rxjs';
+
 import { ProductService } from 'src/app/services/product.service';
 import { ProductInterface } from '../interfaces/product.interface';
 
@@ -49,7 +48,6 @@ export class ProductsShowComponent implements OnInit {
   
   async show() {
     this.product = await this.productService.showProduct(this.idProduct) as ProductInterface; 
-   console.log("🚀 ~ file: products-show.component.ts:30 ~ ProductsShowComponent ~ show ~ this.product:", this.product)
   }
 
 }

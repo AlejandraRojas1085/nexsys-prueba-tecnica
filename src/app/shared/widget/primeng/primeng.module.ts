@@ -14,6 +14,15 @@ import { ProgressBarModule } from 'primeng/progressbar';
 import { InputTextModule } from 'primeng/inputtext';
 import { CardModule } from 'primeng/card';
 import { CarouselModule } from 'primeng/carousel';
+import { ImageModule } from 'primeng/image';
+import { GalleriaModule } from 'primeng/galleria';
+import { VirtualScrollerModule } from 'primeng/virtualscroller';
+import { SkeletonModule } from 'primeng/skeleton';
+import { DataViewModule } from 'primeng/dataview';
+import { RadioButtonModule } from 'primeng/radiobutton';
+import { StyleClassModule } from 'primeng/styleclass';
+import { TagModule } from 'primeng/tag';
+import { FocusTrapModule } from 'primeng/focustrap';
 @NgModule({
   declarations: [],
   imports: [
@@ -30,8 +39,16 @@ import { CarouselModule } from 'primeng/carousel';
     ProgressBarModule,
     InputTextModule,
     CardModule,
-    CarouselModule
-
+    CarouselModule,
+    ImageModule,
+    VirtualScrollerModule,
+    SkeletonModule,
+    DataViewModule,
+    RadioButtonModule,
+    StyleClassModule,
+    TagModule,
+    FocusTrapModule,
+   
   ],
   exports: [
     CommonModule,
@@ -47,8 +64,17 @@ import { CarouselModule } from 'primeng/carousel';
     ProgressBarModule,
     InputTextModule,
     CardModule,
-    CarouselModule
-
+    CarouselModule,
+    ImageModule,
+    GalleriaModule,
+    VirtualScrollerModule,
+    SkeletonModule,
+    DataViewModule,
+    RadioButtonModule,
+    StyleClassModule,
+    TagModule,
+    FocusTrapModule,
+   
   ]
 })
 export class PrimengModule { }

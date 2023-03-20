@@ -1,5 +1,5 @@
-<p-card>
-  <div class="grid" *ngIf="product">
+<p-card *ngIf="product">
+  <div class="grid">
     <div class="col-12 sm:col-12 lg:col-6 ">
 
       <p-carousel [value]="product.images" styleClass="custom-carousel" [numVisible]="1" [numScroll]="1"
@@ -29,7 +29,10 @@
       <button pButton type="button" label="ADD TO CART" class="p-button-sm"></button>
     </div>
   </div>
-  <div class="grid">
 
+  <div class="grid hidden lg:flex sm:flex md:flex">
+    <div class="col-6 flex text-center align-items-center justify-content-center">      
+        <p-image  *ngFor="let item of product.images" [src]=item width="80%" class="mx-1" [preview]="true" />
+    </div>
   </div>
 </p-card>

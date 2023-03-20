@@ -13,7 +13,9 @@ export class ApiStoreService {
   ) { }
 
   getAllProducts(){
-  return this.httpClient.get('https://api.escuelajs.co/api/v1/products');   
+  return this.httpClient.get<ProductInterface>('https://api.escuelajs.co/api/v1/products');  
+  
+ 
   }
 
   getSingleProduct(id: number){
