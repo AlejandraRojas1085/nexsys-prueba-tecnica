@@ -26,8 +26,8 @@ interface category {
 })
 export class ProductsListComponent implements OnInit {
   @ViewChild('dataview') dataView!: DataView;
-  products:Array<any> =[];
 
+  products:ProductInterface[] = [];
   sortOptions!: SelectItem[];
   sortOrder!: number;
   sortField!: string;
@@ -35,7 +35,7 @@ export class ProductsListComponent implements OnInit {
   minimum = new FormControl(null, [Validators.required]);
   maximum = new FormControl(null, [Validators.required]);
 
-  filters!: filter[]
+  filters!: filter[];
   selectedFilter!: filter;
 
   categories!: category[];
@@ -65,7 +65,7 @@ export class ProductsListComponent implements OnInit {
       { value: 'category', name: 'Category' }
     ];
 
-    this.categoriesProducts()
+    this.categoriesProducts();
   }
 
   show(id: number) {
@@ -87,10 +87,10 @@ export class ProductsListComponent implements OnInit {
   categoriesProducts() {
     const setObj = new Set();   
 
-    const category = this.products.reduce((acc, product) => {      
+    const category = this.products.reduce((acc:category[], product) => {      
       if (!setObj.has(product.category.id)) {
         setObj.add(product.category.id)
-        acc.push(product)
+        acc.push(product.category)
       } 
       return acc;
     }, []);
@@ -100,15 +100,17 @@ export class ProductsListComponent implements OnInit {
 
   async getFilterByPriceRange() {
     if (this.maximum.value && this.minimum.value) {
-      this.products = await this.filterService.filterPriceRange(parseInt(this.minimum.value), parseInt(this.maximum.value)) as Array<ProductInterface>
+      this.products = await this.filterService.filterPriceRange(parseInt(this.minimum.value), parseInt(this.maximum.value)) as Array<ProductInterface>;
+    }else{
+      this.products;
     }
   }
 
   async getFilterByCategory() {
     if (this.selectedCategory) {
-      this.products = await this.filterService.filterCategory(this.selectedCategory.id) as Array<ProductInterface>
+      this.products = await this.filterService.filterCategory(this.selectedCategory.id) as Array<ProductInterface>;
     } else {
-      this.products
+      this.products;
     }
   }
 }

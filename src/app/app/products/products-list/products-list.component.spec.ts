@@ -17,7 +17,7 @@ describe('ProductsListComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('Debe de existir el ProductsListComponent', () => {
     expect(component).toBeTruthy();
   });
 });

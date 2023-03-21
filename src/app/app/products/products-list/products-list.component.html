@@ -30,7 +30,7 @@
           <input type="number" pInputText [formControl]="minimum" placeholder="minimum" class="ml-2" required>
           <input type="number" pInputText [formControl]="maximum" placeholder="maximum" class="ml-2" required>
           <p-button icon="pi pi-search" [loading]="loading[2]" (onClick)="load(2)" class="ml-2"
-            (click)="getFilterByPriceRange()" ></p-button>
+            (click)="getFilterByPriceRange()"></p-button>
         </span>
       </div>
 
@@ -38,12 +38,15 @@
     <ng-template let-product pTemplate="listItem">
       <div class="col-12">
         <div class="product-list-item">
-          <img src="{{ product.images[0].includes('https')? product.images[0]: '../../../../../../assets/demo/images/error/producto-default.jpg' }}"
-            [alt]="product.title">
+          <ng-container class="container-image">
+            <img
+              src="{{ product.images[0].includes('https')? product.images[0]: '../../../../../../assets/demo/images/error/producto-default.jpg' }}"
+              [alt]="product.title">
+          </ng-container>
 
           <div class="product-list-detail">
-            <div class="product-name text-red-600">{{product.title}}</div>
-            <div class="product-description">{{product.description}}</div>
+            <div class="product-name text-red-600 content">{{product.title}}</div>
+            <div class="product-description content">{{product.description}}</div>
             <i class="pi pi-tag product-category-icon"></i><span
               class="product-category">{{product.category.name}}</span>
           </div>

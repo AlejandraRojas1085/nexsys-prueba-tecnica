@@ -1,5 +1,5 @@
 .content{
-  height: 55px;
+  height: 40px;
   display: -webkit-box;
  -webkit-box-orient: vertical; 
  -webkit-line-clamp: 2;
@@ -76,11 +76,12 @@
       .product-grid-item-bottom {
           display: flex;
           align-items: center;
-          justify-content: space-between;
+      justify-content: space-between;
       }
   
       img {
           width: 75%;
+          height: 200px;
           box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
           margin: 2rem 0;
       }
