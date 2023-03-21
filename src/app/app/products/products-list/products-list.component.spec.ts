@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 import { ProductsListComponent } from './products-list.component';
 
@@ -8,6 +9,7 @@ describe('ProductsListComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
+      imports: [ HttpClientTestingModule ],
       declarations: [ ProductsListComponent ]
     })
     .compileComponents();
@@ -17,7 +19,8 @@ describe('ProductsListComponent', () => {
     fixture.detectChanges();
   });
 
-  it('Debe de existir el ProductsListComponent', () => {
+  it('should create', () => {
     expect(component).toBeTruthy();
   });
+  
 });
