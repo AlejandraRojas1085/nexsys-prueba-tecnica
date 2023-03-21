@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
@@ -29,6 +30,7 @@ import { AppLayoutComponent } from "./app.layout.component";
     ],
     imports: [
         BrowserModule,
+        CommonModule,
         FormsModule,
         HttpClientModule,
         BrowserAnimationsModule,
@@ -41,6 +43,8 @@ import { AppLayoutComponent } from "./app.layout.component";
         RouterModule,
         AppConfigModule
     ],
-    exports: [AppLayoutComponent]
+    exports: [       
+        AppFooterComponent
+    ]
 })
 export class AppLayoutModule { }
